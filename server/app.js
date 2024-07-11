@@ -1,3 +1,13 @@
+// app.js
+
+require('dotenv').config();
+const tracer = require('dd-trace').init({
+    env: 'production',
+    service: 'your-service-name',
+    version: '1.0.0',
+    apiKey: process.env.DATADOG_API_KEY
+});
+
 const express = require('express');
 const app = express();
 const authRoutes = require('./routes/authRoutes');

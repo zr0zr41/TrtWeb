@@ -1,1 +1,8 @@
-"const express = require('express');\nconst router = express.Router();\nconst userController = require('../controllers/userController');\n\nrouter.get('/user', userController.getUser);\n\nmodule.exports = router;" 
+const express = require('express');
+const router = express.Router();
+const userController = require('../controllers/userController');
+
+router.post('/register', userController.register);
+router.get('/users', userController.getAllUsers);
+
+module.exports = router;

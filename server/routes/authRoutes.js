@@ -1,1 +1,7 @@
-"const express = require('express');\nconst router = express.Router();\nconst authController = require('../controllers/authController');\n\nrouter.post('/login', authController.login);\nrouter.post('/register', authController.register);\n\nmodule.exports = router;" 
+const express = require('express');
+const router = express.Router();
+const authController = require('../controllers/authController');
+
+router.post('/login', authController.login);
+
+module.exports = router;

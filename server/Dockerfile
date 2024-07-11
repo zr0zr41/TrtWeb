@@ -1,24 +1,24 @@
-# Use the official Node.js image as a base
+# Use official Node.js image as a parent image
 FROM node:20.15.1
 
 # Set the working directory
-WORKDIR /app
-
-# Copy package.json and package-lock.json
-COPY server/package*.json ./
+WORKDIR /usr/src/app
 
 # Install dependencies
+COPY package*.json ./
 RUN npm install
 
-# Copy the rest of the server code
-COPY server/ .
-
 # Install Datadog Agent
-RUN apt-get update && apt-get install -y curl gnupg apt-transport-https && \
-    DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=82ed2d6337f64ba763f05367abebc163 DD_SITE="us5.datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
+RUN apt-get update && \
+    apt-get install -y curl gnupg && \
+    DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=${DD_API_KEY} DD_SITE=${DD_SITE} bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
+
+# Bundle app source
+COPY . .
 
 # Expose the port the app runs on
 EXPOSE 3000
 
-# Start the server
-CMD ["npm", "start"]
+# Start Datadog Agent and the application
+CMD service datadog-agent start && npm start
+

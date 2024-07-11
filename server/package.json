@@ -1,0 +1,1 @@
+"{\n  \"name\": \"server\",\n  \"version\": \"1.0.0\",\n  \"main\": \"server.js\",\n  \"dependencies\": {\n    \"express\": \"4.17.1\",\n    \"mongoose\": \"5.10.9\"\n  }\n}" 

@@ -6,7 +6,7 @@ const UserList = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch('https://your-render-url/api/users');
+                const response = await fetch('https://trtweb.onrender.com/api/users');
                 const data = await response.json();
                 setUsers(data);
             } catch (error) {

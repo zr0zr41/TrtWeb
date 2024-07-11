@@ -1,1 +1,15 @@
-"const express = require('express');\nconst app = express();\nconst connectDB = require('./config/db');\nconnectDB();\n\napp.use(express.json());\n\napp.use('/api/auth', require('./routes/authRoutes'));\napp.use('/api/users', require('./routes/userRoutes'));\n\nconst PORT = process.env.PORT || 5000;\napp.listen(PORT, () => console.log(`Server running on port ${PORT}`));" 
+const express = require('express');
+const app = express();
+const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
+
+app.use(express.json());
+
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+
+app.get('/', (req, res) => {
+    res.send('Server is running');
+});
+
+module.exports = app;

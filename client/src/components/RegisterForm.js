@@ -12,7 +12,7 @@ const RegisterForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('https://your-render-url/api/users/register', {
+            const response = await fetch('https://trtweb.onrender.com/api/users/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ fullName, username, email, phone, password, referral, reason })

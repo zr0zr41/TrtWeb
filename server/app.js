@@ -3,9 +3,11 @@
 require('dotenv').config();
 const tracer = require('dd-trace').init({
     env: 'production',
-    service: 'your-service-name',
+    service: 'webtrt',
     version: '1.0.0',
-    apiKey: process.env.DATADOG_API_KEY
+    url: `http://${process.env.DD_AGENT_HOST || 'localhost'}:8126`,
+    hostname: 'localhost',
+    port: 8126
 });
 
 const express = require('express');

@@ -1,0 +1,1 @@
+"const express = require('express');\nconst connectDB = require('./config/db');\n\nconst app = express();\nconnectDB();\n\napp.use(express.json());\n\napp.use('/api/auth', require('./routes/authRoutes'));\napp.use('/api/users', require('./routes/userRoutes'));\n\nconst PORT = process.env.PORT || 5000;\napp.listen(PORT, () => console.log(`Server started on port ${PORT}`));" 

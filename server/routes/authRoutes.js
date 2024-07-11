@@ -1,0 +1,1 @@
+"const express = require('express');\nconst router = express.Router();\nconst authController = require('../controllers/authController');\n\nrouter.post('/login', authController.login);\nrouter.post('/register', authController.register);\n\nmodule.exports = router;" 

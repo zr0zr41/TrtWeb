@@ -21,3 +21,4 @@ EXPOSE 3000
 
 # Start Datadog Agent and the application
 CMD service datadog-agent start && npm start
+
